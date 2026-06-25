@@ -1,0 +1,42 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+
+    int p1, p2, p3, t1, t2;
+    cin >> p1 >> p2 >> p3 >> t1 >> t2;
+
+    int l, r;
+    cin >> l >> r;
+
+    long long ans = (r - l) * p1;
+    int prev = r;
+
+    for (int i = 1; i < n; i++) {
+        cin >> l >> r;
+
+        int idle = l - prev;
+
+        if (idle <= t1) {
+            ans += idle * p1;
+        }
+        else if (idle <= t1 + t2) {
+            ans +=  t1 * p1;
+            ans += (idle - t1) * p2;
+        }
+        else {
+            ans += t1 * p1;
+            ans += t2 * p2;
+            ans += (idle - t1 - t2) * p3;
+        }
+
+        ans += (r - l) * p1;
+        prev = r;
+    }
+
+    cout << ans << endl;
+
+    return 0;
+}

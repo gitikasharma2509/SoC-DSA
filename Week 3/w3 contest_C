@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+long long cnt[10];
+
+int dr(long long x)
+{
+    while (x > 9)
+    {
+        int sum = 0;
+        while (x > 0)
+        {
+            sum += x % 10;
+            x /= 10;
+        }
+        x = sum;
+    }
+    return x;
+}
+
+int main()
+{
+    long long N;
+    cin >> N;
+
+    for (int i = 1; i <= N; i++)
+        cnt[dr(i)]++;
+
+    long long ans = 0;
+
+    for (int i = 1; i <= 9; i++)
+    {
+        for (int j = 1; j <= 9; j++)
+        {
+            int k = dr(i * j);
+            ans += cnt[i] * cnt[j] * cnt[k];
+        }
+    }
+
+    for (long long a = 1; a <= N; a++)
+    {
+        for (long long b = 1; a * b <= N; b++)
+        {
+            ans--;
+        }
+    }
+
+    cout << ans << endl;
+
+    return 0;
+}
