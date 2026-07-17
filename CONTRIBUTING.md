@@ -1,230 +1,127 @@
-# Contribution Guidelines
+# How to Submit Assignments
 
-This guide walks you through how to contribute your weekly competitive programming solutions to this repository using a fork-based workflow.
-
----
-
-# Steps to Contribute
-
-## 1. Fork This Repository
-
-- Visit: [www.github.com/adityasanapala/SoC-DSA](www.github.com/adityasanapala/SoC-DSA)
-- In the top-right corner of the page, click **Fork**.
-
-<img width="1440" height="357" alt="Fork Repository" src="https://github.com/user-attachments/assets/802d2929-ddf0-45b1-8811-5efe0c9fbf32" />
-
-- Under **Owner**, select your GitHub account.
-- By default, the fork will have the same name as the original repository.
-- Click **Create fork**.
+Welcome! This guide walks you through submitting your weekly assignments for this course via GitHub.
 
 ---
 
-## 2. Clone Your Fork Locally
+## Prerequisites
+
+- A [GitHub account](https://github.com)
+- Git installed on your laptop ([Download Git](https://git-scm.com/downloads))
+- Basic familiarity with the terminal
+
+---
+
+## One-Time Setup
+
+### Step 1 — Fork the repository
+
+1. Go to the main course repository on GitHub
+2. Click the **Fork** button (top-right corner)
+3. This creates your own personal copy of the repo under your GitHub account
+
+### Step 2 — Clone your fork
 
 Open your terminal and run:
-
-```bash
-git clone https://github.com/<your-username>/SoC-DSA.git
-cd SoC-DSA
-```
-
-✅ Example:
 
 ```bash
 git clone https://github.com/adityasanapala/SoC-DSA.git
 cd SoC-DSA
 ```
 
----
+Replace `YOUR_GITHUB_USERNAME` accordingly.
 
-## 3. Configure the Upstream Repository (Recommended)
+### Step 3 — Create your branch
 
-Adding the original repository as an upstream remote helps you keep your fork updated.
-
-```bash
-git remote add upstream https://github.com/adityasanapala/SoC-DSA.git
-git remote -v
-```
-
-To sync your fork with the latest changes:
+Create a branch named **exactly** as your roll number (e.g. `23b0001`):
 
 ```bash
-git fetch upstream
-git checkout main
-git merge upstream/main
+git checkout -b 23b0001
 ```
+
+> ⚠️ Your branch name must match your roll number exactly — lowercase, no spaces.  
+> The format is: two digits + the letter `b` + your number (e.g. `23b0001`).  
+> This is how your submissions are identified — get this right!
 
 ---
 
-## 4. Create a Branch With Your Full Name
+## Submitting Assignments
 
-This branch will contain all your weekly submissions.
+You can submit one week at a time, or multiple weeks in a single PR — both are fine.
 
-```bash
-git checkout -b your-name
+### Step 1 — Add your solutions
+
+Place your solution files inside the relevant week folder. For example:
+
+```
+Week 1/my_solution.py
+Week 2/my_solution.py
+Week 2/helper.py
 ```
 
-✅ Example:
+> ⚠️ Do **not** rename or delete the existing files in the week folders (like `README.md`).  
+> Only **add** your own new files.
 
-```bash
-git checkout -b adityasanapala
-```
-
-⚠️ Use your actual full name or a clear variation of it.
-
----
-
-## 5. Add Your Weekly Solutions
-
-- Organize your files inside the corresponding weekly folders:
-
-```text
-/Week 1
-/Week 2
-/Week 3
-```
-
-- Each folder already contains a separate `README.md` file with the problems/questions for that week.
-
-- You may use any valid naming convention for your solution files.
-
-✅ Examples:
-
-```text
-week_1/sort_colors.cpp
-week_1/kth_largest_element.py
-```
-
-or
-
-```text
-week_1/lc_1.cpp
-week_1/cses_1.py
-```
-
----
-
-## 6. Write Clean and Readable Code
-
-Before submitting:
-
-- Ensure your code compiles and runs correctly.
-- Add comments wherever necessary.
-- Follow proper formatting and indentation.
-- Avoid uploading unnecessary files such as:
-
-```text
-.exe
-.out
-.idea/
-.vscode/
-__pycache__/
-```
-
----
-
-## 7. Commit and Push Your Code
-
-Stage all changes:
+### Step 2 — Commit your work
 
 ```bash
 git add .
+git commit -m "Submit Week 1"
 ```
 
-Commit your work with a meaningful message:
+### Step 3 — Push to your fork
 
 ```bash
-git commit -m "Add Week 1 solutions"
+git push origin 23b0001
 ```
 
-Push your branch to your fork:
+(Replace `23b0001` with your actual roll number.)
+
+### Step 4 — Open a Pull Request
+
+1. Go to your fork on GitHub
+2. You'll see a banner saying **"Compare & pull request"** — click it
+3. Make sure the PR is targeted at the **main course repo's `main` branch** (not your own fork)
+4. Give your PR a clear title like: `Week 1 submission - 23b0001`
+5. Click **Create pull request**
+
+---
+
+## What happens next
+
+Once your PR is reviewed and approved by the instructor:
+
+- Your files are automatically moved to `submissions/23b0001/Week 1/`
+- The bot will post a comment on your PR confirming exactly which files were received
+- The week folders in the main repo are restored to their original state
+
+---
+
+## Updating a submission before it's merged
+
+If you need to fix something after opening a PR (but **before** it's merged), just push more commits to the same branch — the PR updates automatically:
 
 ```bash
-git push origin your-name
-```
-
-✅ Example:
-
-```bash
-git push origin sanchita-chaurasia
+# edit your file, then:
+git add .
+git commit -m "Fix Week 1 solution"
+git push origin 23b0001
 ```
 
 ---
 
-## 8. Create a Pull Request (PR)
+## Common mistakes to avoid
 
-Once you finish the problems for a specific week:
-
-1. Go to your forked repository on GitHub.
-2. Click **Compare & pull request**.
-3. Configure the PR as follows:
-
-| Setting | Value |
+| ❌ Don't do this | ✅ Do this instead |
 |---|---|
-| Base repository | `adityasanapala/SoC-DSA` |
-| Base branch | `<your-name>` |
-| Head repository | Your fork |
-| Head branch | `<your-name>` |
-
-⚠️ Do **not** create PRs against the `main` branch unless explicitly instructed.
-
-4. Click **Create Pull Request**.
+| Name your branch anything other than your roll number | Use exactly your roll number, e.g. `23b0001` |
+| Submit files outside `Week */` folders | Put files inside `Week 1/`, `Week 2/`, etc. |
+| Delete or rename existing week files | Only **add** your own new files |
+| Open a PR to your own fork | Open the PR to the **main course repo** |
+| Use uppercase or spaces in your branch name | Keep it lowercase, no spaces |
 
 ---
 
-## 9. Repeat Every Week
+## Need help?
 
-For future weeks:
-
-- Continue using the same branch.
-- Add your new solutions to the appropriate weekly folder.
-- Commit and push the changes.
-- Your existing PR will update automatically.
-
----
-
-# Rules & Best Practices
-
-- Do **not** push directly to `main`.
-- Submit PRs only to your own named branch.
-- Follow the weekly folder structure properly.
-- Keep commits clean and descriptive.
-- Test your code before pushing.
-- Ask doubts and share progress in the WhatsApp group.
-- Maintain academic honesty — avoid copying solutions blindly.
-
----
-
-# Example Workflow
-
-```bash
-# Clone your fork
-git clone https://github.com/<your-username>/SoC-DSA.git
-
-# Enter repository
-cd SoC-DSA
-
-# Create your branch
-git checkout -b your-name
-
-# Add solutions
-git add .
-
-# Commit changes
-git commit -m "Add Week 1 solutions"
-
-# Push branch
-git push origin your-name
-```
-
----
-
-# Need Help?
-
-If you face any issues:
-
-- Ask in the WhatsApp group.
-- Reach out to mentors/coordinators.
-- Check GitHub documentation for help with Git commands and pull requests.
-
-Happy Coding 🚀
+If something isn't working, open an issue on the course repo or reach out to the instructor directly.
